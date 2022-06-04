@@ -34,23 +34,22 @@ public class HomePage {
         driver.findElement(By.xpath(btnRegistrar)).click();
     }
 
-    public void preencherEmail() {
-        driver.findElement(By.xpath(email)).sendKeys("teste@teste.com.br");
+    public void preencherEmail(String email_massa) {
+        driver.findElement(By.xpath(email)).sendKeys(email_massa);
     }
 
-    public void preencherNome() {
-        driver.findElement(By.xpath(nome)).sendKeys("Flavio Dias");
-
-    }
-
-    public void preencherSenha() {
-        driver.findElement(By.xpath(senha)).sendKeys("123456");
+    public void preencherNome(String nome_massa) {
+        driver.findElement(By.xpath(nome)).sendKeys(nome_massa);
 
     }
 
-    public void preencherConfirmacaoSenha() {
-        driver.findElement(By.xpath(confirmarSenha)).sendKeys("123456");
+    public void preencherSenha(String senha_massa) {
+        driver.findElement(By.xpath(senha)).sendKeys(senha_massa);
 
+    }
+
+    public void preencherConfirmacaoSenha(String confirmacao_massa) {
+        driver.findElement(By.xpath(confirmarSenha)).sendKeys(confirmacao_massa);
     }
 
     public void clicarCriarComSaldo() {

@@ -13,6 +13,8 @@ import org.openqa.selenium.chrome.ChromeDriver;
 import pages.HomePage;
 
 import java.net.http.WebSocket;
+import java.util.List;
+import java.util.Map;
 import java.util.concurrent.TimeUnit;
 
 public class LoginSteps {
@@ -30,9 +32,10 @@ public class LoginSteps {
     }
 
     @AfterAll
-    public static void after(){
+    public static void after() {
         driver.quit();
     }
+
     @Dado("que esteja na pagina inicial: {string}")
     public void queEstejaNaPaginaInicial(String url) {
         driver.get(url);
@@ -41,10 +44,10 @@ public class LoginSteps {
     @E("possua um cadastro")
     public void possuaUmCadastro() {
         homePage.clicarRegistrar();
-        homePage.preencherEmail();
-        homePage.preencherNome();
-        homePage.preencherSenha();
-        homePage.preencherConfirmacaoSenha();
+        homePage.preencherEmail("teste@teste.com.br");
+        homePage.preencherNome("Flavio Dias");
+        homePage.preencherSenha("123456");
+        homePage.preencherConfirmacaoSenha("123456");
         homePage.clicarCriarComSaldo();
         homePage.clicarCadastrar();
         homePage.clicarFecharContaCriada();
@@ -56,7 +59,7 @@ public class LoginSteps {
         homePage.preencheSenhaLogin();
     }
 
-    @E("clica em fazer login")
+    @E("clicar em fazer login")
     public void clicaEmFazerLogin() {
         homePage.clicarAcessar();
     }
@@ -64,5 +67,22 @@ public class LoginSteps {
     @Entao("validar se a pagina de boas vindas foi carregada com sucesso")
     public void validarSeAPaginaDeBoasVindasFoiCarregadaComSucesso() {
         Assert.assertTrue(homePage.validaMsgBoasVindas());
+    }
+
+    @E("preencho o cadastro com os dados:")
+    public void preenchoOCadastroComOsDados(List<Map<String, String>> dataTable) {
+        String email = dataTable.get(0).get("Email");
+        String nome = dataTable.get(0).get("Nome");
+        String senha = dataTable.get(0).get("Senha");
+        String confirmacaoSenha = dataTable.get(0).get("Confirmacao Senha");
+        homePage.clicarRegistrar();
+        homePage.preencherEmail(email);
+        homePage.preencherNome(nome);
+        homePage.preencherSenha(senha);
+        homePage.preencherConfirmacaoSenha(confirmacaoSenha);
+        homePage.clicarCriarComSaldo();
+        homePage.clicarCadastrar();
+        homePage.clicarFecharContaCriada();
+
     }
 }
