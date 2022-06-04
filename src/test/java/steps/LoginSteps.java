@@ -12,7 +12,6 @@ import org.openqa.selenium.WebDriver;
 import org.openqa.selenium.chrome.ChromeDriver;
 import pages.HomePage;
 
-import java.net.http.WebSocket;
 import java.util.List;
 import java.util.Map;
 import java.util.concurrent.TimeUnit;
